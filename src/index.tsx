@@ -1,15 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import DashBoard from "./pages/DashBoard/DashBoard";
-import List from "./pages/List/List";
-import SigIn from "./pages/SigIn/SigIn";
+import App from "./pages/App";
 
 ReactDOM.render(
   <React.StrictMode>
-    <List />
-    <SigIn />
-    <DashBoard />
+    <App />
   </React.StrictMode>,
   document.getElementById("root")
 );
