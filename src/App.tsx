@@ -1,15 +1,15 @@
 import React from "react";
-
-import Layout from './components/Layout';
-
+import { ThemeProvider } from "styled-components";
+import Layout from "./components/Layout";
+import dark from "./styles/themes/dark";
 import GlobalStyles from "./styles/GlobalStyles";
 
 const src: React.FC = () => {
   return (
-    <>
+    <ThemeProvider theme={dark}>
       <Layout />
       <GlobalStyles />
-    </>
+    </ThemeProvider>
   );
 };
 
