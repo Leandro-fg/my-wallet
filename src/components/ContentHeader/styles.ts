@@ -14,12 +14,13 @@ export const TitleContainer = styled.div`
     color: ${(props) => props.theme.colors.white};
 
     &::after {
-      content: '';
+      content: "";
       display: block;
       width: 55px;
-      border-bottom: 10px solid ${props => props.theme.colors.warning}
+      border-bottom: 10px solid ${(props) => props.theme.colors.warning};
     }
   }
 `;
 
-export const Controllers = styled.div``;
+export const Controllers = styled.div`
+`;
