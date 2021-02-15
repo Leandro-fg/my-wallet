@@ -20,11 +20,109 @@ const List: React.FC = () => {
       </ContentHeader>
       <Content>
         <HistoryFinanceCard
-          cardColor="#313862"
+          cardColor={"#313862"}
           tagColor="#e44c4e"
-          title="compra"
+          title="Placa de Video"
           subTitle="15/02/2021"
-          amount="R$: 130,00"
+          amount="R$: 3500,00"
+        />
+        <HistoryFinanceCard
+          cardColor={"#313862"}
+          tagColor="#e44c4e"
+          title="Processador"
+          subTitle="15/02/2021"
+          amount="R$: 1500,00"
+        />
+        <HistoryFinanceCard
+          cardColor={"#313862"}
+          tagColor="#e44c4e"
+          title="Placa mãe"
+          subTitle="15/02/2021"
+          amount="R$: 800,00"
+        />
+        <HistoryFinanceCard
+          cardColor={"#313862"}
+          tagColor="#e44c4e"
+          title="Font de 700w"
+          subTitle="15/02/2021"
+          amount="R$: 760,00"
+        />
+        <HistoryFinanceCard
+          cardColor={"#313862"}
+          tagColor="#e44c4e"
+          title="Terreno"
+          subTitle="15/02/2021"
+          amount="R$: 740,00"
+        />
+        <HistoryFinanceCard
+          cardColor={"#313862"}
+          tagColor="#e44c4e"
+          title="Terreno"
+          subTitle="15/02/2021"
+          amount="R$: 740,00"
+        />
+        <HistoryFinanceCard
+          cardColor={"#313862"}
+          tagColor="#e44c4e"
+          title="Terreno"
+          subTitle="15/02/2021"
+          amount="R$: 740,00"
+        />
+        <HistoryFinanceCard
+          cardColor={"#313862"}
+          tagColor="#e44c4e"
+          title="Terreno"
+          subTitle="15/02/2021"
+          amount="R$: 740,00"
+        />
+        <HistoryFinanceCard
+          cardColor={"#313862"}
+          tagColor="#e44c4e"
+          title="Terreno"
+          subTitle="15/02/2021"
+          amount="R$: 740,00"
+        />
+        <HistoryFinanceCard
+          cardColor={"#313862"}
+          tagColor="#e44c4e"
+          title="Terreno"
+          subTitle="15/02/2021"
+          amount="R$: 740,00"
+        />
+        <HistoryFinanceCard
+          cardColor={"#313862"}
+          tagColor="#e44c4e"
+          title="Terreno"
+          subTitle="15/02/2021"
+          amount="R$: 740,00"
+        />
+        <HistoryFinanceCard
+          cardColor={"#313862"}
+          tagColor="#e44c4e"
+          title="Terreno"
+          subTitle="15/02/2021"
+          amount="R$: 740,00"
+        />
+        <HistoryFinanceCard
+          cardColor={"#313862"}
+          tagColor="#e44c4e"
+          title="Terreno"
+          subTitle="15/02/2021"
+          amount="R$: 740,00"
+        />
+        <HistoryFinanceCard
+          cardColor={"#313862"}
+          tagColor="#e44c4e"
+          title="Terreno"
+          subTitle="15/02/2021"
+          amount="R$: 740,00"
+        />
+        <HistoryFinanceCard
+          cardColor={"#313862"}
+          tagColor="#e44c4e"
+          title="Terreno"
+          subTitle="15/02/2021"
+          amount="R$: 740,00"
         />
       </Content>
     </Container>
