@@ -10,7 +10,7 @@ interface IHistoryFinanceCardProps {
   amount: string;
 }
 
-const HistoryFinanceCard: React.FC = ({
+const HistoryFinanceCard: React.FC<IHistoryFinanceCardProps> = ({
   cardColor,
   tagColor,
   title,
