@@ -1,10 +1,11 @@
+
 # My-wallet
 
-Essa aplicação tem o intuito de criar uma carteira virtual com ferramentas para auxiliar na economia
+This application is intended to create a virtual wallet with tools to assist in economy
 
 
 ### yarn
 
-- Use yarn para instalar todas as dependencias
+- Use yarn to install all dependencies
 
-- Use yarn start para compilar a aplicação
+- Use yarn start to compile the application
