@@ -4,105 +4,42 @@ import ContentHeader from "../../components/ContentHeader";
 import SelectInput from "../../components/SelectInput";
 import HistoryFinanceCard from "../../components/HistoryFinanceCard";
 
-import { Container, Content } from "./styles";
+import { Container, Content, Filters } from "./styles";
 
-const options = [
-  { value: "Rodrigo", label: "Rodrigo" },
-  { value: "Leandro", label: "Leandro" },
-  { value: "Sabrina", label: "Sabrina" },
+const months = [
+  { value: 2, label: "Fevereiro" },
+  { value: 3, label: "Março" },
+  { value: 4, label: "Abril" },
+];
+
+const years = [
+  { value: 2020, label: 2020 },
+  { value: 2019, label: 2019 },
+  { value: 2018, label: 2018 },
 ];
 
 const List: React.FC = () => {
   return (
     <Container>
       <ContentHeader title="Saidas" lineColor="#e44c4e">
-        <SelectInput options={options} />
+        <SelectInput options={months} />
+        <SelectInput options={years} />
       </ContentHeader>
+      <Filters>
+        <button 
+          type="button" 
+          className="tag-filter tag-filter-recurrent" 
+        >
+          Recorrentes
+        </button>
+        <button 
+          type="button" 
+          className="tag-filter tag-filter-eventual" 
+        >
+          Eventuais
+        </button>
+      </Filters>
       <Content>
-        <HistoryFinanceCard
-          tagColor="#e44c4e"
-          title="Placa de Video"
-          subTitle="15/02/2021"
-          amount="R$: 3500,00"
-        />
-        <HistoryFinanceCard
-          tagColor="#e44c4e"
-          title="Processador"
-          subTitle="15/02/2021"
-          amount="R$: 1500,00"
-        />
-        <HistoryFinanceCard
-          tagColor="#e44c4e"
-          title="Placa mãe"
-          subTitle="15/02/2021"
-          amount="R$: 800,00"
-        />
-        <HistoryFinanceCard
-          tagColor="#e44c4e"
-          title="Font de 700w"
-          subTitle="15/02/2021"
-          amount="R$: 760,00"
-        />
-        <HistoryFinanceCard
-          tagColor="#e44c4e"
-          title="Terreno"
-          subTitle="15/02/2021"
-          amount="R$: 740,00"
-        />
-        <HistoryFinanceCard
-          tagColor="#e44c4e"
-          title="Terreno"
-          subTitle="15/02/2021"
-          amount="R$: 740,00"
-        />
-        <HistoryFinanceCard
-          tagColor="#e44c4e"
-          title="Terreno"
-          subTitle="15/02/2021"
-          amount="R$: 740,00"
-        />
-        <HistoryFinanceCard
-          tagColor="#e44c4e"
-          title="Terreno"
-          subTitle="15/02/2021"
-          amount="R$: 740,00"
-        />
-        <HistoryFinanceCard
-          tagColor="#e44c4e"
-          title="Terreno"
-          subTitle="15/02/2021"
-          amount="R$: 740,00"
-        />
-        <HistoryFinanceCard
-          tagColor="#e44c4e"
-          title="Terreno"
-          subTitle="15/02/2021"
-          amount="R$: 740,00"
-        />
-        <HistoryFinanceCard
-          tagColor="#e44c4e"
-          title="Terreno"
-          subTitle="15/02/2021"
-          amount="R$: 740,00"
-        />
-        <HistoryFinanceCard
-          tagColor="#e44c4e"
-          title="Terreno"
-          subTitle="15/02/2021"
-          amount="R$: 740,00"
-        />
-        <HistoryFinanceCard
-          tagColor="#e44c4e"
-          title="Terreno"
-          subTitle="15/02/2021"
-          amount="R$: 740,00"
-        />
-        <HistoryFinanceCard
-          tagColor="#e44c4e"
-          title="Terreno"
-          subTitle="15/02/2021"
-          amount="R$: 740,00"
-        />
         <HistoryFinanceCard
           tagColor="#e44c4e"
           title="Terreno"
