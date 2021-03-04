@@ -17,8 +17,16 @@ interface IRouterParams {
 const List: React.FC<IRouterParams> = ({ match }) => {
   const { type } = match.params;
 
-  const title = useMemo(() => {
-    return type === "entry-balance" ? 'Entradas' : 'Saidas' 
+  const titleProps = useMemo(() => {
+    return type === "entry-balance"
+      ? {
+          title: "Entradas",
+          lineColor: "#F7931B",
+        }
+      : {
+          title: "Saidas",
+          lineColor: "#e44c4e",
+        };
   }, [type]);
 
   const months = [
@@ -35,7 +43,7 @@ const List: React.FC<IRouterParams> = ({ match }) => {
 
   return (
     <Container>
-      <ContentHeader title={title} lineColor="#e44c4e">
+      <ContentHeader title={titleProps.title} lineColor={titleProps.lineColor}>
         <SelectInput options={months} />
         <SelectInput options={years} />
       </ContentHeader>
