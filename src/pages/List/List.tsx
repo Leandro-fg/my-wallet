@@ -46,7 +46,7 @@ const List: React.FC<IRouterParams> = ({ match }) => {
   }, [type]);
 
   const listData = useMemo(() => {
-    return type === "entry-balance"?  gains : expenses
+    return type === "entry-balance" ? gains : expenses;
   }, [type]);
   const months = [
     { value: 2, label: "Fevereiro" },
@@ -68,7 +68,7 @@ const List: React.FC<IRouterParams> = ({ match }) => {
         amountFormated: item.amount,
         frequency: item.frequency,
         dataFormated: item.date,
-        tagColor: "#4e41f0",
+        tagColor: item.frequency === "recorrente" ? "#4e41f0" : "#e44c4e",
       };
     });
     setData(response);
@@ -91,7 +91,7 @@ const List: React.FC<IRouterParams> = ({ match }) => {
       <Content>
         {data.map((item) => (
           <HistoryFinanceCard
-            key={item.id}  
+            key={item.id}
             tagColor={item.tagColor}
             title={item.description}
             subTitle={item.dataFormated}
