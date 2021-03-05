@@ -4,6 +4,9 @@ import ContentHeader from "../../components/ContentHeader";
 import SelectInput from "../../components/SelectInput";
 import HistoryFinanceCard from "../../components/HistoryFinanceCard";
 
+import gains from "../../repositories/gains";
+import expenses from "../../repositories/expenses";
+
 import { Container, Content, Filters } from "./styles";
 
 interface IRouterParams {
