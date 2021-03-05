@@ -6,7 +6,8 @@ import HistoryFinanceCard from "../../components/HistoryFinanceCard";
 
 import gains from "../../repositories/gains";
 import expenses from "../../repositories/expenses";
-import formatCurrency from '../../utils/formatCurrency';
+import formatCurrency from "../../utils/formatCurrency";
+import formatDate from "../../utils/formatDate";
 
 import { Container, Content, Filters } from "./styles";
 
@@ -68,7 +69,7 @@ const List: React.FC<IRouterParams> = ({ match }) => {
         description: item.description,
         amountFormated: formatCurrency(Number(item.amount)),
         frequency: item.frequency,
-        dataFormated: item.date,
+        dataFormated: formatDate(item.date),
         tagColor: item.frequency === "recorrente" ? "#4e41f0" : "#e44c4e",
       };
     });
