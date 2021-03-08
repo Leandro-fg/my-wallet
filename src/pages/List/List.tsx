@@ -30,6 +30,9 @@ interface IData {
 
 const List: React.FC<IRouterParams> = ({ match }) => {
   const [data, setData] = useState<IData[]>([]);
+  const [yearSelected, setYearSelected] = useState();
+  const [monthSelected, setMonthSelected] = useState();
+  const [daySelected, setDaySelected] = useState();
 
   const { type } = match.params;
 
