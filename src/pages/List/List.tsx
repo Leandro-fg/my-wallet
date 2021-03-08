@@ -31,8 +31,12 @@ interface IData {
 const List: React.FC<IRouterParams> = ({ match }) => {
   const [data, setData] = useState<IData[]>([]);
   const [yearSelected, setYearSelected] = useState(String);
-  const [monthSelected, setMonthSelected] = useState(String);
-  const [daySelected, setDaySelected] = useState(String);
+  const [monthSelected, setMonthSelected] = useState(
+    String(new Date().getMonth() + 1)
+  );
+  const [daySelected, setDaySelected] = useState(
+    String(new Date().getFullYear())
+  );
 
   const { type } = match.params;
 
@@ -60,6 +64,7 @@ const List: React.FC<IRouterParams> = ({ match }) => {
   ];
 
   const years = [
+    { value: 2021, label: 2021 },
     { value: 2020, label: 2020 },
     { value: 2019, label: 2019 },
     { value: 2018, label: 2018 },
@@ -77,14 +82,21 @@ const List: React.FC<IRouterParams> = ({ match }) => {
       };
     });
     setData(response);
-    
   }, []);
 
   return (
     <Container>
       <ContentHeader title={titleProps.title} lineColor={titleProps.lineColor}>
-        <SelectInput options={months} onChange={(e) => setMonthSelected(e.target.value)} />
-        <SelectInput options={years} onChange={(e) => setMonthSelected(e.target.value)}/>
+        <SelectInput
+          options={months}
+          onChange={(e) => setMonthSelected(e.target.value)}
+          defaultValue={monthSelected}
+        />
+        <SelectInput
+          options={years}
+          onChange={(e) => setYearSelected(e.target.value)}
+          defaultValue={yearSelected}
+        />
       </ContentHeader>
       <Filters>
         <button type="button" className="tag-filter tag-filter-recurrent">
