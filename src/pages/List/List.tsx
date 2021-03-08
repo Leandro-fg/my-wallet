@@ -30,9 +30,9 @@ interface IData {
 
 const List: React.FC<IRouterParams> = ({ match }) => {
   const [data, setData] = useState<IData[]>([]);
-  const [yearSelected, setYearSelected] = useState();
-  const [monthSelected, setMonthSelected] = useState();
-  const [daySelected, setDaySelected] = useState();
+  const [yearSelected, setYearSelected] = useState(String);
+  const [monthSelected, setMonthSelected] = useState(String);
+  const [daySelected, setDaySelected] = useState(String);
 
   const { type } = match.params;
 
@@ -77,13 +77,14 @@ const List: React.FC<IRouterParams> = ({ match }) => {
       };
     });
     setData(response);
+    
   }, []);
 
   return (
     <Container>
       <ContentHeader title={titleProps.title} lineColor={titleProps.lineColor}>
-        <SelectInput options={months} />
-        <SelectInput options={years} />
+        <SelectInput options={months} onChange={(e) => setMonthSelected(e.target.value)} />
+        <SelectInput options={years} onChange={(e) => setMonthSelected(e.target.value)}/>
       </ContentHeader>
       <Filters>
         <button type="button" className="tag-filter tag-filter-recurrent">

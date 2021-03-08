@@ -7,12 +7,13 @@ interface IselectInputProps {
     value: string | number;
     label: string | number;
   }[];
+  onChange(event: React.ChangeEvent<HTMLSelectElement>): void | undefined;
 }
 
-const SelectInput: React.FC<IselectInputProps> = ({ options }) => {
+const SelectInput: React.FC<IselectInputProps> = ({ options, onChange}) => {
   return (
     <Container>
-      <select name="" id="">
+      <select onChange={onChange} name="" id="">
         {options.map((option) => (
           <option 
           key={option.value}
