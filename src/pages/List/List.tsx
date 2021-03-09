@@ -77,17 +77,19 @@ const List: React.FC<IRouterParams> = ({ match }) => {
     { value: 2019, label: 2019 },
     { value: 2018, label: 2018 },
   ];
-  
+
   useEffect(() => {
+
     const filteredDate = listData.filter((item) => {
       const date = new Date(item.date);
-      const month = String(date.getDate());
+      const month = String(date.getMonth() + 1);
       const year = String(date.getFullYear());
-     
-
+      
       return month === monthSelected && year === yearSelected;
     });
+
     const formattedData = filteredDate.map((item) => {
+
       return {
         id: String(new Date().getTime()) + item.amount,
         description: item.description,
