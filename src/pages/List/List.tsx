@@ -30,12 +30,11 @@ interface IData {
 
 const List: React.FC<IRouterParams> = ({ match }) => {
   const [data, setData] = useState<IData[]>([]);
-  const [yearSelected, setYearSelected] = useState(String);
+  const [yearSelected, setYearSelected] = useState(
+    String(new Date().getFullYear())
+  );
   const [monthSelected, setMonthSelected] = useState(
     String(new Date().getMonth() + 1)
-  );
-  const [daySelected, setDaySelected] = useState(
-    String(new Date().getFullYear())
   );
 
   const { type } = match.params;
@@ -58,9 +57,18 @@ const List: React.FC<IRouterParams> = ({ match }) => {
     return type === "entry-balance" ? gains : expenses;
   }, [type]);
   const months = [
+    { value: 1, label: "Janeiro" },
     { value: 2, label: "Fevereiro" },
     { value: 3, label: "Março" },
     { value: 4, label: "Abril" },
+    { value: 5, label: "Maio" },
+    { value: 6, label: "Junho" },
+    { value: 7, label: "Julho" },
+    { value: 8, label: "Agosto" },
+    { value: 9, label: "Setembro" },
+    { value: 10, label: "Outubro" },
+    { value: 11, label: "Novembro" },
+    { value: 12, label: "Dezembro" },
   ];
 
   const years = [
@@ -69,11 +77,19 @@ const List: React.FC<IRouterParams> = ({ match }) => {
     { value: 2019, label: 2019 },
     { value: 2018, label: 2018 },
   ];
-
+  
   useEffect(() => {
-    const response = listData.map((item: any) => {
+    const filteredDate = listData.filter((item) => {
+      const date = new Date(item.date);
+      const month = String(date.getDate());
+      const year = String(date.getFullYear());
+     
+
+      return month === monthSelected && year === yearSelected;
+    });
+    const formattedData = filteredDate.map((item) => {
       return {
-        id: String(Math.random() * data.length),
+        id: String(new Date().getTime()) + item.amount,
         description: item.description,
         amountFormated: formatCurrency(Number(item.amount)),
         frequency: item.frequency,
@@ -81,8 +97,8 @@ const List: React.FC<IRouterParams> = ({ match }) => {
         tagColor: item.frequency === "recorrente" ? "#4e41f0" : "#e44c4e",
       };
     });
-    setData(response);
-  }, []);
+    setData(formattedData);
+  }, [listData, monthSelected, yearSelected, data.length]);
 
   return (
     <Container>
