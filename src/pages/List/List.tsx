@@ -26,7 +26,7 @@ interface IData {
   description: string;
   amountFormated: string;
   frequency: string;
-  dataFormated: string;
+  dateFormated: string;
   tagColor: string;
 }
 
@@ -38,12 +38,15 @@ const List: React.FC<IRouterParams> = ({ match }) => {
   const [monthSelected, setMonthSelected] = useState(
     String(new Date().getMonth() + 1)
   );
-  const [selectedFrequency, setSelectedFrequency] = useState(['recorrente', 'eventual'])
+  const [frequencyFilterSelected, setFrequencyFilterSelected] = useState([
+    "recorrente",
+    "eventual",
+  ]);
 
-  const { type } = match.params;
+  const movimentType = match.params.type;
 
   const titleProps = useMemo(() => {
-    return type === "entry-balance"
+    return movimentType === "entry-balance"
       ? {
           title: "Entradas",
           lineColor: "#F7931B",
@@ -54,11 +57,11 @@ const List: React.FC<IRouterParams> = ({ match }) => {
           lineColor: "#e44c4e",
           expenses,
         };
-  }, [type]);
+  }, [movimentType]);
 
   const listData = useMemo(() => {
-    return type === "entry-balance" ? gains : expenses;
-  }, [type]);
+    return movimentType === "entry-balance" ? gains : expenses;
+  }, [movimentType]);
 
   const months = useMemo(() => {
     return ListOfmonths.map((month, index) => {
@@ -95,7 +98,11 @@ const List: React.FC<IRouterParams> = ({ match }) => {
       const month = String(date.getMonth() + 1);
       const year = String(date.getFullYear());
 
-      return month === monthSelected && year === yearSelected && selectedFrequency.includes(item.frequency);
+      return (
+        month === monthSelected &&
+        year === yearSelected &&
+        frequencyFilterSelected.includes(item.frequency)
+      );
     });
 
     const formattedData = filteredDate.map((item) => {
@@ -104,23 +111,25 @@ const List: React.FC<IRouterParams> = ({ match }) => {
         description: item.description,
         amountFormated: formatCurrency(Number(item.amount)),
         frequency: item.frequency,
-        dataFormated: formatDate(item.date),
+        dateFormated: formatDate(item.date),
         tagColor: item.frequency === "recorrente" ? "#4e41f0" : "#e44c4e",
       };
     });
     setData(formattedData);
-  }, [listData, monthSelected, yearSelected, data.length, selectedFrequency]);
+  }, [listData, monthSelected, yearSelected, data.length, frequencyFilterSelected]);
 
   const handleFrequencyClick = (frequency: string) => {
-    const alreadySelected = selectedFrequency.findIndex(item => item === frequency);
+    const alreadySelected = frequencyFilterSelected.findIndex(
+      (item) => item === frequency
+    );
 
-    if (alreadySelected >= 0){
-      const filtered = selectedFrequency.filter(item => item !== frequency)
-      setSelectedFrequency(filtered)
+    if (alreadySelected >= 0) {
+      const filtered = frequencyFilterSelected.filter((item) => item !== frequency);
+      setFrequencyFilterSelected(filtered);
     } else {
-      setSelectedFrequency((prev) => [...prev, frequency])
+      setFrequencyFilterSelected((prev) => [...prev, frequency]);
     }
-  }
+  };
 
   return (
     <Container>
@@ -139,14 +148,18 @@ const List: React.FC<IRouterParams> = ({ match }) => {
       <Filters>
         <button
           type="button"
-          className={`tag-filter tag-filter-eventual ${selectedFrequency.includes('recorrente') && 'tag-actived'}`}
+          className={`tag-filter tag-filter-eventual ${
+            frequencyFilterSelected.includes("recorrente") && "tag-actived"
+          }`}
           onClick={() => handleFrequencyClick("recorrente")}
         >
           Recorrentes
         </button>
         <button
           type="button"
-          className={`tag-filter tag-filter-recurrent ${selectedFrequency.includes('eventual') && 'tag-actived'}`}
+          className={`tag-filter tag-filter-recurrent ${
+            frequencyFilterSelected.includes("eventual") && "tag-actived"
+          }`}
           onClick={() => handleFrequencyClick("eventual")}
         >
           Eventuais
@@ -158,7 +171,7 @@ const List: React.FC<IRouterParams> = ({ match }) => {
             key={item.id}
             tagColor={item.tagColor}
             title={item.description}
-            subTitle={item.dataFormated}
+            subTitle={item.dateFormated}
             amount={item.amountFormated}
           />
         ))}
