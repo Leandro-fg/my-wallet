@@ -34,7 +34,7 @@ const DashBoard: React.FC = () => {
       const year = date.getFullYear();
 
       if (!uniqueYears.includes(year)) {
-        uniqueYears.push(year); /* Garante que só exista um ano na lista */
+        uniqueYears.push(year); 
       }
     });
 
