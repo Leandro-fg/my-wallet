@@ -33,10 +33,10 @@ interface IData {
 const List: React.FC<IRouterParams> = ({ match }) => {
   const [data, setData] = useState<IData[]>([]);
   const [yearSelected, setYearSelected] = useState(
-    String(new Date().getFullYear())
+    Number(new Date().getFullYear())
   );
   const [monthSelected, setMonthSelected] = useState(
-    String(new Date().getMonth() + 1)
+    Number(new Date().getMonth() + 1)
   );
   const [frequencyFilterSelected, setFrequencyFilterSelected] = useState([
     "recorrente",
@@ -95,8 +95,8 @@ const List: React.FC<IRouterParams> = ({ match }) => {
   useEffect(() => {
     const filteredDate = listData.filter((item) => {
       const date = new Date(item.date);
-      const month = String(date.getMonth() + 1);
-      const year = String(date.getFullYear());
+      const month = date.getMonth() + 1;
+      const year = date.getFullYear();
 
       return (
         month === monthSelected &&
@@ -116,7 +116,13 @@ const List: React.FC<IRouterParams> = ({ match }) => {
       };
     });
     setData(formattedData);
-  }, [listData, monthSelected, yearSelected, data.length, frequencyFilterSelected]);
+  }, [
+    listData,
+    monthSelected,
+    yearSelected,
+    data.length,
+    frequencyFilterSelected,
+  ]);
 
   const handleFrequencyClick = (frequency: string) => {
     const alreadySelected = frequencyFilterSelected.findIndex(
@@ -124,24 +130,41 @@ const List: React.FC<IRouterParams> = ({ match }) => {
     );
 
     if (alreadySelected >= 0) {
-      const filtered = frequencyFilterSelected.filter((item) => item !== frequency);
+      const filtered = frequencyFilterSelected.filter(
+        (item) => item !== frequency
+      );
       setFrequencyFilterSelected(filtered);
     } else {
       setFrequencyFilterSelected((prev) => [...prev, frequency]);
     }
   };
-
+  const handleMonthSelected = (month: string) => {
+    try {
+      const parseMonth = Number(month);
+      setMonthSelected(parseMonth);
+    } catch (error) {
+      throw new Error("invalid month value. is accept 0 - 24");
+    }
+  };
+  const handleYearSelected = (year: string) => {
+    try {
+      const parseYear = Number(year);
+      setYearSelected(parseYear);
+    } catch (error) {
+      throw new Error("invalid month value. is accept 0 - 24");
+    }
+  };
   return (
     <Container>
       <ContentHeader title={titleProps.title} lineColor={titleProps.lineColor}>
         <SelectInput
           options={months}
-          onChange={(e) => setMonthSelected(e.target.value)}
+          onChange={(e) => handleMonthSelected(e.target.value)}
           defaultValue={monthSelected}
         />
         <SelectInput
           options={years}
-          onChange={(e) => setYearSelected(e.target.value)}
+          onChange={(e) => handleYearSelected(e.target.value)}
           defaultValue={yearSelected}
         />
       </ContentHeader>
