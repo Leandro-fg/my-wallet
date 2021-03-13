@@ -35,7 +35,7 @@ const walletBox: React.FC<IWalletBoxProps> = ({
   };
   return (
     <Container color={color}>
-      <span> {title}</span>
+      <span>{title}</span>
       <h1>{amount}</h1>
       <small>{footerLabel}</small>
       <img src={iconSelected()} alt={title} />
