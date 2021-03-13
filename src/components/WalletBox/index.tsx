@@ -21,12 +21,24 @@ const walletBox: React.FC<IWalletBoxProps> = ({
   color,
   icon,
 }) => {
+  const iconSelected = () => {
+    switch (icon) {
+      case "dolar":
+        return dolarImg;
+      case "arrowUp":
+        return arrowUpImg;
+      case "arrowDown":
+        return arrowDownImg;
+      default:
+        return undefined;
+    }
+  };
   return (
     <Container color={color}>
       <span> {title}</span>
       <h1>{amount}</h1>
       <small>{footerLabel}</small>
-      <img src={dolarImg} alt={title} />
+      <img src={iconSelected()} alt={title} />
     </Container>
   );
 };

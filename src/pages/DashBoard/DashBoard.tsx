@@ -87,6 +87,20 @@ const DashBoard: React.FC = () => {
           footerLabel="atualizado com base nas entradas e saidas"
           icon='dolar'
           />
+          <WalletBox 
+          title='Entradas'
+          color="#F7931B"
+          amount={5000.00}
+          footerLabel="atualizado com base nas entradas e saidas"
+          icon='arrowUp'
+          />
+          <WalletBox 
+          title='saldo'
+          color="#e44c4e"
+          amount={4850.00}
+          footerLabel="atualizado com base nas entradas e saidas"
+          icon='arrowDown'
+          />
         </Content>
       </Container>
     </div>
