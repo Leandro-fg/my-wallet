@@ -1,18 +1,32 @@
 import React from "react";
 
-import happyImg from "../../assets/happy.svg";
-
 import { Container } from "./styles";
 
-const MessageBox: React.FC = () => {
+interface ImessageBoxProps {
+  title: string;
+  description: string;
+  footerText: string;
+  icon: string;
+}
+
+const MessageBox: React.FC<ImessageBoxProps> = ({
+  title,
+  description,
+  footerText,
+  icon,
+}) => {
   return (
     <Container>
       <header>
         <h1>
-          Muito bem!
-          <img src={happyImg} alt="" />
+          {title}
+          <img src={icon} alt="" />
         </h1>
+        <p>{description}</p>
       </header>
+      <footer>
+        <span>{footerText}</span>
+      </footer>
     </Container>
   );
 };

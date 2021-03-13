@@ -18,6 +18,6 @@ export const Container = styled.div`
     border-radius: 10px;
   }
   ::-webkit-scrollbar-track {
-    background-color: ${(props) => props.theme.colors.tertiar};
+    background-color: ${(props) => props.theme.colors.tertiary};
   }
 `;

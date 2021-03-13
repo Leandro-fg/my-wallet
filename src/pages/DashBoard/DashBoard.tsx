@@ -5,6 +5,9 @@ import SelectInput from "../../components/SelectInput";
 import WalletBox from "../../components/WalletBox";
 import MessageBox from "../../components/MessageBox";
 
+import happyImg from "../../assets/happy.svg";
+import sad from "../../assets/sad.svg";
+
 import expenses from "../../repositories/expenses";
 import gains from "../../repositories/gains";
 
@@ -102,7 +105,12 @@ const DashBoard: React.FC = () => {
             footerLabel="atualizado com base nas entradas e saidas"
             icon="arrowDown"
           />
-          <MessageBox />
+          <MessageBox
+            title="Muito Bem"
+            description="Sua carteira está positiva!"
+            footerText="Continue assim. Considere inverstir o seu saldo."
+            icon={happyImg}
+          />
         </Content>
       </Container>
     </div>
