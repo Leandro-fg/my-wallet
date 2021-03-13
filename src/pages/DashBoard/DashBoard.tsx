@@ -2,10 +2,11 @@ import React, { useMemo, useState } from "react";
 
 import ContentHeader from "../../components/ContentHeader";
 import SelectInput from "../../components/SelectInput";
-import WalletBox from '../../components/WalletBox';
+import WalletBox from "../../components/WalletBox";
+import MessageBox from "../../components/MessageBox";
 
-import expenses from '../../repositories/expenses'
-import gains from '../../repositories/gains'
+import expenses from "../../repositories/expenses";
+import gains from "../../repositories/gains";
 
 import ListOfmonths from "../../utils/months";
 
@@ -35,7 +36,7 @@ const DashBoard: React.FC = () => {
       const year = date.getFullYear();
 
       if (!uniqueYears.includes(year)) {
-        uniqueYears.push(year); 
+        uniqueYears.push(year);
       }
     });
 
@@ -80,27 +81,28 @@ const DashBoard: React.FC = () => {
           />
         </ContentHeader>
         <Content>
-          <WalletBox 
-          title='saldo'
-          color="#4e41f0"
-          amount={150.00}
-          footerLabel="atualizado com base nas entradas e saidas"
-          icon='dolar'
+          <WalletBox
+            title="saldo"
+            color="#4e41f0"
+            amount={150.0}
+            footerLabel="atualizado com base nas entradas e saidas"
+            icon="dolar"
           />
-          <WalletBox 
-          title='Entradas'
-          color="#F7931B"
-          amount={5000.00}
-          footerLabel="atualizado com base nas entradas e saidas"
-          icon='arrowUp'
+          <WalletBox
+            title="Entradas"
+            color="#F7931B"
+            amount={5000.0}
+            footerLabel="atualizado com base nas entradas e saidas"
+            icon="arrowUp"
           />
-          <WalletBox 
-          title='saldo'
-          color="#e44c4e"
-          amount={4850.00}
-          footerLabel="atualizado com base nas entradas e saidas"
-          icon='arrowDown'
+          <WalletBox
+            title="saldo"
+            color="#e44c4e"
+            amount={4850.0}
+            footerLabel="atualizado com base nas entradas e saidas"
+            icon="arrowDown"
           />
+          <MessageBox />
         </Content>
       </Container>
     </div>
