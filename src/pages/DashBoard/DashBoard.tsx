@@ -67,9 +67,32 @@ const DashBoard: React.FC = () => {
         }
       }
     });
-    return total
+    return total;
   }, [monthSelected, yearSelected]);
 
+  const totalGains = useMemo(() => {
+    let total: number = 0;
+
+    gains.forEach((item) => {
+      const date = new Date(item.date);
+      const year = date.getFullYear();
+      const month = date.getMonth() + 1;
+
+      if (month === monthSelected && year === yearSelected) {
+        try {
+          total += Number(item.amount);
+        } catch {
+          throw new Error("Invalid amount! Amount must be number.");
+        }
+      }
+    });
+    return total;
+  }, [monthSelected, yearSelected]);
+
+  const totalBalance = useMemo(()=>{
+    return totalGains - totalExenses;
+  }, [totalGains, totalExenses])
+  
   const handleMonthSelected = (month: string) => {
     try {
       const parseMonth = Number(month);
@@ -106,14 +129,14 @@ const DashBoard: React.FC = () => {
           <WalletBox
             title="saldo"
             color="#4e41f0"
-            amount={150.0}
+            amount={totalBalance}
             footerLabel="atualizado com base nas entradas e saidas"
             icon="dolar"
           />
           <WalletBox
             title="Entradas"
             color="#F7931B"
-            amount={5000.0}
+            amount={totalGains}
             footerLabel="atualizado com base nas entradas e saidas"
             icon="arrowUp"
           />
