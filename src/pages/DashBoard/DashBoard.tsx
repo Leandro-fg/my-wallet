@@ -51,11 +51,30 @@ const DashBoard: React.FC = () => {
     });
   }, []);
 
+  const totalExenses = useMemo(() => {
+    let total: number = 0;
+
+    expenses.forEach((item) => {
+      const date = new Date(item.date);
+      const year = date.getFullYear();
+      const month = date.getMonth() + 1;
+
+      if (month === monthSelected && year === yearSelected) {
+        try {
+          total += Number(item.amount);
+        } catch {
+          throw new Error("Invalid amount! Amount must be number.");
+        }
+      }
+    });
+    return total
+  }, [monthSelected, yearSelected]);
+
   const handleMonthSelected = (month: string) => {
     try {
       const parseMonth = Number(month);
       setMonthSelected(parseMonth);
-    } catch (error) {
+    } catch {
       throw new Error("invalid month value. is accept 0 - 24");
     }
   };
@@ -63,7 +82,7 @@ const DashBoard: React.FC = () => {
     try {
       const parseYear = Number(year);
       setYearSelected(parseYear);
-    } catch (error) {
+    } catch {
       throw new Error("invalid month value. is accept 0 - 24");
     }
   };
@@ -101,7 +120,7 @@ const DashBoard: React.FC = () => {
           <WalletBox
             title="saldo"
             color="#e44c4e"
-            amount={4850.0}
+            amount={totalExenses}
             footerLabel="atualizado com base nas entradas e saidas"
             icon="arrowDown"
           />
