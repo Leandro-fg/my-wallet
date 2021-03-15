@@ -53,7 +53,7 @@ const DashBoard: React.FC = () => {
     });
   }, []);
 
-  const totalExenses = useMemo(() => {
+  const totalExpenses = useMemo(() => {
     let total: number = 0;
 
     expenses.forEach((item) => {
@@ -92,8 +92,8 @@ const DashBoard: React.FC = () => {
   }, [monthSelected, yearSelected]);
 
   const totalBalance = useMemo(() => {
-    return totalGains - totalExenses;
-  }, [totalGains, totalExenses]);
+    return totalGains - totalExpenses;
+  }, [totalGains, totalExpenses]);
 
   const message = useMemo(() => {
     if (totalBalance < 0) {
@@ -121,6 +121,29 @@ const DashBoard: React.FC = () => {
       };
     }
   }, [totalBalance]);
+
+  const relationExpensesVersusGains = useMemo(() => {
+    const total = totalGains + totalExpenses;
+
+    const percentGains = (totalGains / total) * 100;
+    const percentExpenses = (totalGains / total) * 100;
+
+    const data = [
+      {
+        name: "Entradas",
+        value: totalGains,
+        percent: Number(percentGains.toFixed(1)),
+        color: "#e44c4e",
+      },
+      {
+        name: "Saídas",
+        value: totalExpenses,
+        percent: Number(percentExpenses.toFixed(1)),
+        color: "#e44c4e",
+      },
+    ];
+    return data;
+  }, [totalGains, totalExpenses]);
 
   const handleMonthSelected = (month: string) => {
     try {
@@ -172,7 +195,7 @@ const DashBoard: React.FC = () => {
           <WalletBox
             title="saldo"
             color="#e44c4e"
-            amount={totalExenses}
+            amount={totalExpenses}
             footerLabel="atualizado com base nas entradas e saidas"
             icon="arrowDown"
           />
@@ -182,7 +205,9 @@ const DashBoard: React.FC = () => {
             footerText={message.footerText}
             icon={message.icon}
           />
-          <PieChart />
+          <PieChart 
+            data={relationExpensesVersusGains}
+          />
         </Content>
       </Container>
     </div>

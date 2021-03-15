@@ -10,18 +10,30 @@ import {
   Legend,
 } from "./styles";
 
-const PieChart: React.FC = () => (
+interface IPieChartProps {
+  data: {
+    name: string;
+    value: number;
+    percent: number;
+    color: string;
+  }[];
+}
+
+const PieChart: React.FC<IPieChartProps> = ({ data }) => (
   <Container>
     <SideLeft>
+      <h2>Relação</h2>
       <LegendContainer>
-        <Legend color={"#f7931b"}>
-          <div>5%</div>
-          <span>Entradas</span>
-        </Legend>
-        <Legend color={"#e44c4e"}>
+        {data.map((indicator) => (
+          <Legend key={indicator.name} color={"#f7931b"}>
+            <div>{indicator.percent}</div>
+            <span>{indicator.name}</span>
+          </Legend>
+          /* <Legend color={"#e44c4e"}>
           <div>95%</div>
           <span>Saídas</span>
-        </Legend>
+        </Legend> */
+        ))}
       </LegendContainer>
     </SideLeft>
     <SideRight></SideRight>
