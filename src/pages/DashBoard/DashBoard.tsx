@@ -164,6 +164,28 @@ const DashBoard: React.FC = () => {
           }
         }
       });
+      let amountOutput = 0;
+      expenses.forEach((expense) => {
+        const date = new Date(expense.date);
+        const expenseMonth = date.getMonth();
+        const expenseYear = date.getFullYear();
+
+        if (expenseMonth === month && expenseYear === yearSelected) {
+          try {
+            amountOutput += Number(expense.amount);
+          } catch {
+            throw new Error(
+              "AmountEntry is invalid. AmountEntry must be a vaid number"
+            );
+          }
+        }
+      });
+      return {
+        monthNumber: month, 
+        month: ListOfmonths[month].substr(0, 3),
+        amountEntry,
+        amountOutput
+      }
     });
   }, [yearSelected]);
 
@@ -229,7 +251,7 @@ const DashBoard: React.FC = () => {
           />
           <PieChartBox data={relationExpensesVersusGains} />
           <HistoryBox
-            data={}
+            data={historyData}
             lineColorAmountEntry={}
             linecolorAmountOutput={}
           />
