@@ -8,7 +8,13 @@ import {
   Tooltip,
 } from "recharts";
 
-import { Container } from "./styles";
+import {
+  Container,
+  ChartContainer,
+  LegendContainer,
+  Header,
+  Legend,
+} from "./styles";
 
 interface IHistoryBox {
   data: {
@@ -26,35 +32,50 @@ const HistoryBox: React.FC<IHistoryBox> = ({
   linecolorAmountOutput,
 }) => (
   <Container>
-    <h2>Histórico de saldo</h2>
-    <ResponsiveContainer>
-      <LineChart
-        data={data}
-        margin={{ top: 5, right: 20, left: 20, bottom: 5 }}
-      >
-        <CartesianGrid strokeDasharray="3 3" stroke="#cecece" />
-        <XAxis dataKey="month" stroke="#cecece" />
-        <Tooltip />
-        <Line
-          type="monotone"
-          dataKey="amountEntry"
-          name="Entradas"
-          stroke={lineColorAmountEntry}
-          strokeWidth={5}
-          dot={{ r: 5 }}
-          activeDot={{ r: 8 }}
-        />
-        <Line
-          type="monotone"
-          dataKey="amountOutput"
-          name="Saídas"
-          stroke={linecolorAmountOutput}
-          strokeWidth={5}
-          dot={{ r: 5 }}
-          activeDot={{ r: 8 }}
-        />
-      </LineChart>
-    </ResponsiveContainer>
+    <Header>
+      <h2>Histórico de saldo</h2>
+      <LegendContainer>
+        <Legend color={lineColorAmountEntry}>
+          <div></div>
+          <span>Entradas</span>
+        </Legend>
+        <Legend color={linecolorAmountOutput}>
+          <div></div>
+          <span>Saídas</span>
+        </Legend>
+      </LegendContainer>
+        
+    </Header>
+    <ChartContainer>
+      <ResponsiveContainer>
+        <LineChart
+          data={data}
+          margin={{ top: 5, right: 20, left: 20, bottom: 5 }}
+        >
+          <CartesianGrid strokeDasharray="3 3" stroke="#cecece" />
+          <XAxis dataKey="month" stroke="#cecece" />
+          <Tooltip />
+          <Line
+            type="monotone"
+            dataKey="amountEntry"
+            name="Entradas"
+            stroke={lineColorAmountEntry}
+            strokeWidth={5}
+            dot={{ r: 5 }}
+            activeDot={{ r: 8 }}
+          />
+          <Line
+            type="monotone"
+            dataKey="amountOutput"
+            name="Saídas"
+            stroke={linecolorAmountOutput}
+            strokeWidth={5}
+            dot={{ r: 5 }}
+            activeDot={{ r: 8 }}
+          />
+        </LineChart>
+      </ResponsiveContainer>
+    </ChartContainer>
   </Container>
 );
 

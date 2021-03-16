@@ -186,6 +186,14 @@ const DashBoard: React.FC = () => {
         amountEntry,
         amountOutput,
       };
+    }).filter((item) => {
+      const currentMonth = new Date().getMonth();
+      const currentYear = new Date().getFullYear();
+
+      return (
+        (yearSelected === currentYear && item.monthNumber <= currentMonth) ||
+        yearSelected < currentYear
+      );
     });
   }, [yearSelected]);
 
