@@ -181,11 +181,11 @@ const DashBoard: React.FC = () => {
         }
       });
       return {
-        monthNumber: month, 
+        monthNumber: month,
         month: ListOfmonths[month].substr(0, 3),
         amountEntry,
-        amountOutput
-      }
+        amountOutput,
+      };
     });
   }, [yearSelected]);
 
@@ -237,7 +237,7 @@ const DashBoard: React.FC = () => {
             icon="arrowUp"
           />
           <WalletBox
-            title="saldo"
+            title="Saídas"
             color="#e44c4e"
             amount={totalExpenses}
             footerLabel="atualizado com base nas entradas e saidas"
@@ -252,8 +252,8 @@ const DashBoard: React.FC = () => {
           <PieChartBox data={relationExpensesVersusGains} />
           <HistoryBox
             data={historyData}
-            lineColorAmountEntry={}
-            linecolorAmountOutput={}
+            lineColorAmountEntry="#F7931B"
+            linecolorAmountOutput="#e44c4e"
           />
         </Content>
       </Container>

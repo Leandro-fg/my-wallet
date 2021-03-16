@@ -28,13 +28,16 @@ const HistoryBox: React.FC<IHistoryBox> = ({
   <Container>
     <h2>Histórico de saldo</h2>
     <ResponsiveContainer>
-      <LineChart data={data}>
+      <LineChart
+        data={data}
+        margin={{ top: 5, right: 20, left: 20, bottom: 5 }}
+      >
         <CartesianGrid strokeDasharray="3 3" stroke="#cecece" />
         <XAxis dataKey="month" stroke="#cecece" />
         <Tooltip />
         <Line
           type="monotone"
-          dataKey="amountOutput"
+          dataKey="amountEntry"
           name="Entradas"
           stroke={lineColorAmountEntry}
           strokeWidth={5}
