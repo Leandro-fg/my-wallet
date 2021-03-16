@@ -5,6 +5,7 @@ import SelectInput from "../../components/SelectInput";
 import WalletBox from "../../components/WalletBox";
 import MessageBox from "../../components/MessageBox";
 import PieChartBox from "../../components/PieChartBox";
+import HistoryBox from "../../components/HistoryBox";
 
 import happyImg from "../../assets/happy.svg";
 import sadImg from "../../assets/sad.svg";
@@ -127,18 +128,18 @@ const DashBoard: React.FC = () => {
 
     const percentGains = Number(((totalGains / total) * 100).toFixed(1));
     const percentExpenses = Number(((totalExpenses / total) * 100).toFixed(1));
-    
+
     const data = [
       {
         name: "Entradas",
         value: totalGains,
-        percent: percentGains ? percentGains : 0, 
+        percent: percentGains ? percentGains : 0,
         color: "#e44c4e",
       },
       {
         name: "Saídas",
         value: totalExpenses,
-        percent:  percentExpenses ? percentExpenses : 0, 
+        percent: percentExpenses ? percentExpenses : 0,
         color: "#F7931B",
       },
     ];
@@ -205,8 +206,11 @@ const DashBoard: React.FC = () => {
             footerText={message.footerText}
             icon={message.icon}
           />
-          <PieChartBox 
-            data={relationExpensesVersusGains}
+          <PieChartBox data={relationExpensesVersusGains} />
+          <HistoryBox 
+            data={}
+            lineColorAmountEntry={}
+            linecolorAmountOutput={}
           />
         </Content>
       </Container>
