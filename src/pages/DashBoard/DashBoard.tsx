@@ -146,6 +146,27 @@ const DashBoard: React.FC = () => {
     return data;
   }, [totalGains, totalExpenses]);
 
+  const historyData = useMemo(() => {
+    return ListOfmonths.map((_, month) => {
+      let amountEntry = 0;
+      gains.forEach((gain) => {
+        const date = new Date(gain.date);
+        const gainMonth = date.getMonth();
+        const gainYear = date.getFullYear();
+
+        if (gainMonth === month && gainYear === yearSelected) {
+          try {
+            amountEntry += Number(gain.amount);
+          } catch {
+            throw new Error(
+              "AmountEntry is invalid. AmountEntry must be a vaid number"
+            );
+          }
+        }
+      });
+    });
+  }, [yearSelected]);
+
   const handleMonthSelected = (month: string) => {
     try {
       const parseMonth = Number(month);
@@ -207,7 +228,7 @@ const DashBoard: React.FC = () => {
             icon={message.icon}
           />
           <PieChartBox data={relationExpensesVersusGains} />
-          <HistoryBox 
+          <HistoryBox
             data={}
             lineColorAmountEntry={}
             linecolorAmountOutput={}
