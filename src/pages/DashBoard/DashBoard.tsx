@@ -4,7 +4,7 @@ import ContentHeader from "../../components/ContentHeader";
 import SelectInput from "../../components/SelectInput";
 import WalletBox from "../../components/WalletBox";
 import MessageBox from "../../components/MessageBox";
-import PieChart from "../../components/PieChart";
+import PieChartBox from "../../components/PieChartBox";
 
 import happyImg from "../../assets/happy.svg";
 import sadImg from "../../assets/sad.svg";
@@ -205,7 +205,7 @@ const DashBoard: React.FC = () => {
             footerText={message.footerText}
             icon={message.icon}
           />
-          <PieChart 
+          <PieChartBox 
             data={relationExpensesVersusGains}
           />
         </Content>
