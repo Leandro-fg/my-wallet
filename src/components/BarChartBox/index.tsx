@@ -3,7 +3,13 @@ import { ResponsiveContainer, BarChart, Bar, Cell, Tooltip } from "recharts";
 
 import formatCurrency from "../../utils/formatCurrency";
 
-import { Container, SideRight, SideLeft, LegendContainer, Legend } from "./styles";
+import {
+  Container,
+  SideRight,
+  SideLeft,
+  LegendContainer,
+  Legend,
+} from "./styles";
 
 interface IBarChartProps {
   title: string;
@@ -15,12 +21,11 @@ interface IBarChartProps {
   }[];
 }
 
-const BarChartBox: React.FC<IBarChartProps> = ({ title, data }) => {
-  return (
-    <Container>
-      <SideLeft>
-        <h2>{title}</h2>
-        <LegendContainer>
+const BarChartBox: React.FC<IBarChartProps> = ({ title, data }) => (
+  <Container>
+    <SideLeft>
+      <h2>{title}</h2>
+      <LegendContainer>
         {data.map((indicator) => (
           <Legend key={indicator.name} color={indicator.color}>
             <div>{indicator.percent}%</div>
@@ -28,27 +33,24 @@ const BarChartBox: React.FC<IBarChartProps> = ({ title, data }) => {
           </Legend>
         ))}
       </LegendContainer>
-      </SideLeft>
-      <SideRight>
-        <ResponsiveContainer>
-          <BarChart data={data}>
-            <Bar dataKey="amount" name="Valor">
-              {data.map((indicator) => (
-                <Cell
-                  key={indicator.name}
-                  fill={indicator.color}
-                  cursor="pointer"
-                />
-              ))}
-            </Bar>
-            <Tooltip 
-            cursor={{fill: 'none'}}
-            formatter={formatCurrency} />
-          </BarChart>
-        </ResponsiveContainer>
-      </SideRight>
-    </Container>
-  );
-};
+    </SideLeft>
+    <SideRight>
+      <ResponsiveContainer>
+        <BarChart data={data}>
+          <Bar dataKey="amount" name="Valor">
+            {data.map((indicator) => (
+              <Cell
+                key={indicator.name}
+                fill={indicator.color}
+                cursor="pointer"
+              />
+            ))}
+          </Bar>
+          <Tooltip cursor={{ fill: "none" }} formatter={formatCurrency} />
+        </BarChart>
+      </ResponsiveContainer>
+    </SideRight>
+  </Container>
+);
 
 export default BarChartBox;
