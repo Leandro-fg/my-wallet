@@ -3,7 +3,7 @@ import { ResponsiveContainer, BarChart, Bar, Cell, Tooltip } from "recharts";
 
 import formatCurrency from "../../utils/formatCurrency";
 
-import { Container, SideRight, SideLeft } from "./styles";
+import { Container, SideRight, SideLeft, LegendContainer, Legend } from "./styles";
 
 interface IBarChartProps {
   title: string;
@@ -20,6 +20,14 @@ const BarChartBox: React.FC<IBarChartProps> = ({ title, data }) => {
     <Container>
       <SideLeft>
         <h2>{title}</h2>
+        <LegendContainer>
+        {data.map((indicator) => (
+          <Legend key={indicator.name} color={indicator.color}>
+            <div>{indicator.percent}%</div>
+            <span>{indicator.name}</span>
+          </Legend>
+        ))}
+      </LegendContainer>
       </SideLeft>
       <SideRight>
         <ResponsiveContainer>
