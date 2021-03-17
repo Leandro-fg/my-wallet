@@ -32,9 +32,9 @@ const ThemeProvider: React.FC = ({ children }) => {
 
   const toggleTheme = () => {
     if (theme.title === "dark") {
-      setTheme(dark);
-    } else {
       setTheme(light);
+    } else {
+      setTheme(dark);
     }
   };
   return (
