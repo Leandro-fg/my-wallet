@@ -6,6 +6,7 @@ import WalletBox from "../../components/WalletBox";
 import MessageBox from "../../components/MessageBox";
 import PieChartBox from "../../components/PieChartBox";
 import HistoryBox from "../../components/HistoryBox";
+import BarChartBox from "../../components/BarChartBox";
 
 import happyImg from "../../assets/happy.svg";
 import sadImg from "../../assets/sad.svg";
@@ -230,7 +231,7 @@ const DashBoard: React.FC = () => {
         name: "Eventuais",
         amount: amountRecurrent,
         percent: Number(((amountEventual / total) * 100).toFixed(1)),
-        color: "#f7931b",
+        color: "#e44c4e",
       },
     ];
   }, [monthSelected, yearSelected]);
@@ -300,6 +301,10 @@ const DashBoard: React.FC = () => {
             data={historyData}
             lineColorAmountEntry="#F7931B"
             linecolorAmountOutput="#e44c4e"
+          />
+          <BarChartBox 
+            data={relationExpensevesRecurrentVsEventual}
+            title="Saídas"
           />
         </Content>
       </Container>
