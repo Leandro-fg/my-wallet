@@ -2,12 +2,9 @@ import React from "react";
 
 import logoImg from "../../assets/logo.svg";
 
-import {
-  Container,
-  Logo,
-  Form,
-  FormTitle,
-} from "./styles";
+import Input from "../../components/Input";
+
+import { Container, Logo, Form, FormTitle } from "./styles";
 
 const SigIn: React.FC = () => {
   return (
@@ -16,10 +13,10 @@ const SigIn: React.FC = () => {
         <img src={logoImg} alt="Minha carteira" />
         <h2>Minha carteira</h2>
       </Logo>
-      <Form>
+      <Form onSubmit={() => {}}>
         <FormTitle>Entrar</FormTitle>
-        <input type="text" />
-        <input type="text" />
+        <Input/>
+        <Input/>
 
         <button type="submit">Acessar</button>
       </Form>
