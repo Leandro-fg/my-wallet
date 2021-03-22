@@ -15,9 +15,8 @@ const SigIn: React.FC = () => {
       </Logo>
       <Form onSubmit={() => {}}>
         <FormTitle>Entrar</FormTitle>
-        <Input/>
-        <Input/>
-
+        <Input type="email" required placeholder="e-mail"/>
+        <Input type="password" required placeholder="senha"/>
         <button type="submit">Acessar</button>
       </Form>
     </Container>
