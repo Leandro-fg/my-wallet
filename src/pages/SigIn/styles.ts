@@ -30,17 +30,18 @@ export const Logo = styled.div`
 `;
 
 export const Form = styled.form`
-    width: 300px;
-    height: 300px;
+  width: 300px;
+  height: 300px;
 
-    padding: 30px;
+  padding: 30px;
 
-    border-radius: 10px;
+  border-radius: 10px;
 
-    background: ${props => props.theme.colors.tertiary};
+  background: ${(props) => props.theme.colors.tertiary};
 `;
 
 export const FormTitle = styled.h1`
+  margin-bottom: 40px;
   color: ${(props) => props.theme.colors.white};
   &:after {
     content: "";
