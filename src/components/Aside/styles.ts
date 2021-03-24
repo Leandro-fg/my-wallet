@@ -40,6 +40,25 @@ export const MenuItemLink = styled.a`
     margin-right: 5px;
   }
 `;
+export const MenuItemButton = styled.button`
+  font-size: 16px;
+  color: ${(props) => props.theme.colors.white};
+  text-decoration: none;
+  margin: 7px 0;
+  display: flex;
+  align-items: center;
+  transition: opacity 0.3s;
+  background: none;
+  border: none;
+
+  &:hover {
+    opacity: 0.7;
+  }
+  > svg {
+    font-size: 18px;
+    margin-right: 5px;
+  }
+`;
 
 export const Title = styled.h3`
   color: ${(props) => props.theme.colors.white};
