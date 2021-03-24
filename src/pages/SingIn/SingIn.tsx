@@ -5,7 +5,7 @@ import logoImg from "../../assets/logo.svg";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
 
-import { useAuth } from '../../hooks/auth'
+import { useAuth } from "../../hooks/auth";
 
 import { Container, Logo, Form, FormTitle } from "./styles";
 
@@ -36,6 +36,7 @@ const SigIn: React.FC = () => {
           onChange={(e) => setPassword(e.target.value)}
         />
         <Button type="submit">Acessar</Button>
+        <a href="/register">Registrar-se</a>
       </Form>
     </Container>
   );
