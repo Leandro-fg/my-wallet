@@ -1,14 +1,12 @@
-import React, {createContext. useState, useContext} from 'react';
+import React, {createContext, useState, useContext} from 'react';
 
 interface IAuthContext {
     logged: boolean;
-    signIn(email: string, password: string) : void;
+    signIn(email: string, password: string): void;
     signOut(): void;
 }
 
 const AuthContext = createContext<IAuthContext>({} as IAuthContext);
-
-
 
 const AuthProvider: React.FC = ({children}) => {
     const [logged, setLogged] = useState<boolean>(() => {
@@ -18,8 +16,8 @@ const AuthProvider: React.FC = ({children}) => {
         return !!isLogged
     })
 
-    const signIn = (email, password) => {
-        if(email === 'leandro.godoy@gmail.com' || password === "123") {
+    const signIn = (email: string, password: string) => {
+        if(email === 'leandro.godoy@gmail.com' && password === "123") {
             localStorage.setItem('@my-wallet:logged', 'true')
             setLogged(true)
         }else {
@@ -44,4 +42,4 @@ function useAuth(): IAuthContext {
     return context;
 }
 
-export default {AuthProvider, useAuth};
+export {AuthProvider, useAuth};
